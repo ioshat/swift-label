@@ -1,28 +1,25 @@
 var helpers = {
-    swiftColor: function(chunk, ctx, bodies, params) {
-      var color = ctx.get('color');
+    swiftColor: function(color) {
       var f = function(n) { return n < 0.001 ? 0 : (n/255).toFixed(3); };
-      return chunk.write('TODO');
-      // return chunk.write('colorWithRed:'+f(color.r)+' green:'+f(color.g)+' blue:'+f(color.b)+' alpha:' + color.a);
+      return 'red:'+f(color.r)+' green:'+f(color.g)+' blue:'+f(color.b)+' alpha:' + color.a;
     },
-    swiftAlignment: function(chunk, ctx, bodies, params) {
-      var align = ctx.get('textAlign');
+    swiftAlignment: function(align) {
       var code = '';
       switch (align) {
         case 'left':
-          code = 'NSTextAlignmentLeft';
+          code = '.Left';
           break;
         case 'right':
-          code = 'NSTextAlignmentRight';
+          code = '.Right';
           break;
         case 'center':
-          code = 'NSTextAlignmentCenter';
+          code = '.Center';
           break;
         case 'justified':
-          code = 'NSTextAlignmentJustified';
+          code = '.Justified';
           break;
       }
-      return chunk.write(code);
+      return code;
     },
     swiftFont: function(chunk, ctx, bodies, params) {
       var baseTextStyle = ctx.get('baseTextStyle');
